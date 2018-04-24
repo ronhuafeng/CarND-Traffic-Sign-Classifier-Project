@@ -108,11 +108,9 @@ To train the model, I used an AdamOptimizer, an batch size of 256, 20 epochs and
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
-* training set accuracy of ?
-* validation set accuracy of ? 
-* test set accuracy of ?
-
-If an iterative approach was chosen:
+* training set accuracy of 0.991
+* validation set accuracy of 0.933 
+* test set accuracy of 0.919
 
 I use the basic LeNet architecture at the beginning, but the validation accuracy is low. So I augment the training dataset to make it not as biased as provided. 
 
@@ -130,37 +128,46 @@ Here are five German traffic signs that I found on the web:
 
 The 4th image might be difficult to classify because I can hardly recognize it by my eyes.
 
+The resolution of these images is 80x80. I resize them to 32x32. 
+
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
 Here are the results of the prediction:
 
-| Image                   | Prediction    |
-| :---------------------: | :-----------: |
-| 23, Slippery road       | Stop sign     |
-| 18, General caution     | U-turn        |
-| 7,Speed limit (100km/h) | Yield         |
-| 26,Traffic signals      | Bumpy Road    |
-| 14,Stop                 | Slippery Road |
+| Image                   | Prediction              |
+| :---------------------: | :---------------------: |
+| 23, Slippery road       | 23, Slippery road       |
+| 18, General caution     | 18, General caution     |
+| 7,Speed limit (100km/h) | 7,Speed limit (100km/h) |
+| 26,Traffic signals      | 26,Traffic signals      |
+| 14,Stop                 | 14,Stop                 |
 
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+The model was able to correctly guess 5 of the 5 traffic signs, which gives an accuracy of 100%.
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
+The code for making predictions on my final model is located in the 22th cell of the Ipython notebook.
 
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
+For the first image, the model is very sure that this is a slippery road sign (probability of 1.0). The top five soft max probabilities were
 
-| Probability | Prediction    |
-| :---------: | :-----------: |
-| .60         | Stop sign     |
-| .20         | U-turn        |
-| .05         | Yield         |
-| .04         | Bumpy Road    |
-| .01         | Slippery Road |
+| Probability | Prediction           |
+| :---------: | :------------------: |
+| 1.0         | Slippery road        |
+| 0.0         | Speed limit (20km/h) |
+| 0.0         | Speed limit (30km/h) |
+| 0.0         | Speed limit (50km/h) |
+| 0.0         | Speed limit (60km/h) |
 
+Since the label of the other 4 images are all predicted correctly with a high confidence by the model, I will not list the top five soft max probabilities for them.
 
-For the second image ... 
+For the second image, the model is very sure that this is a general caution sign (probability of 0.999). 
+
+For the third image, the model is very sure that this is a speed limit (100km/h)  sign (probability of 1.0). 
+
+For the fourth image, the model is very sure that this is a traffic signals  sign (probability of 1.0). 
+
+For the fifth image, the model is very sure that this is a stop sign (probability of 1.0).
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 #### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
